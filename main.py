@@ -9,7 +9,7 @@ for x in range(2):
     #print("read file : " + filename)
     f = open(poemPath, "r", encoding='UTF8')
 
-    backgroundImgPath = "res/background-imgs/"+str(random.randrange(1,5))+".jpg"
+    backgroundImgPath = "res/background-imgs/"+str(random.randrange(1,4))+".png"
     backgroundImg = Image.open(backgroundImgPath)
 
     poemTitle = f.readline()
@@ -31,6 +31,6 @@ for x in range(2):
     d.text((100,160), poemAuthor, font=authorFont, fill=WHITE)
     d.text((100,240), poemContent, font=contentFont, fill=WHITE)
 
-    targetPath = "res/result/poemResult("+ str(x) +").png"
+    targetPath = "result/poemResult("+ str(x+1) +").png"
     backgroundImg.save(targetPath)
     print("[LOG]Image Saved!")
