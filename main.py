@@ -16,21 +16,22 @@ for x in range(2):
     poemAuthor = f.readline()
     poemContent = f.read()
 
-    print(str(x+1) + "번째 시 제목:" + poemTitle) #title of the poem
+    print(str(x+1) + "번 시 제목:" + poemTitle) #title of the poem
     print("시인:" + poemAuthor) #author of the poem
     #print(poemContent) #content
 
-    #img = Image.new('RGB', (1000, 1000), color = (0,0,0,0))
-
-    titleFont = ImageFont.truetype(fontPath, 50)
-    authorFont = ImageFont.truetype(fontPath, 20)
+    titleFont = ImageFont.truetype(fontPath, 80)
+    authorFont = ImageFont.truetype(fontPath, 35)
     contentFont = ImageFont.truetype(fontPath, 30)
 
     d = ImageDraw.Draw(backgroundImg)
-    d.text((100,100), poemTitle, font=titleFont, fill=WHITE)
-    d.text((100,160), poemAuthor, font=authorFont, fill=WHITE)
-    d.text((100,240), poemContent, font=contentFont, fill=WHITE)
+    d.text((100,160), poemTitle, font=titleFont, fill=WHITE)
+    d.text((550,260), poemAuthor, font=authorFont, fill=WHITE)
+    d.text((100,360), poemContent, font=contentFont, fill=WHITE)
+
+    d.line((90,320,640,320),fill=WHITE, width=1)
 
     targetPath = "result/poemResult("+ str(x+1) +").png"
     backgroundImg.save(targetPath)
     print("[LOG]Image Saved!")
+    print("--------------------------------")
