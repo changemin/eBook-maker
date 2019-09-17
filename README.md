@@ -24,6 +24,10 @@
 
     C:>pip install Pillow
 
+> 시의 개수와 background img의 개수를 맞추기 위해서 migration을 해주어야 한다.
+
+    C:\YOURWORKSPACE>python main.py -m
+
 ## 두가지의 테스트 files
 
 * txt2poem.py
