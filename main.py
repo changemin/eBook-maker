@@ -3,7 +3,7 @@ import random
 
 WHITE = (255,255,255)
 
-for x in range(2):
+for x in range(1):
     fontPath = "res/font-files/a시나리오.ttf"
     poemPath = "res/poem-txt/poem("+str(x+1)+").txt"
     #print("read file : " + filename)
