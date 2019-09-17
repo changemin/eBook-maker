@@ -25,8 +25,6 @@ print("----------------------------------------")
 
 # with open(configPath) as json_file:
 #     data = json.load(json_file)
-    
-
 
 
 
