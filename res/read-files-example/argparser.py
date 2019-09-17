@@ -5,9 +5,9 @@ parser.add_argument("-m", help="migrate config file",action="store_true")
 args = parser.parse_args()
 
 if args.m:
-    configPath = "config.json"
-    poemPath = "res/poem-txt"
-    BGPath = "res/background-imgs"
+    configPath = "../../config.json"
+    poemPath = "../poem-txt"
+    BGPath = "../background-imgs"
 
     poemList = os.listdir(poemPath)
     BGList = os.listdir(BGPath)

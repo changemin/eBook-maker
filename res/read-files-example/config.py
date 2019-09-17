@@ -1,8 +1,8 @@
 import json,os
 
-configPath = "config.json"
-poemPath = "res/poem-txt"
-BGPath = "res/background-imgs"
+configPath = "../../config.json"
+poemPath = "../poem-txt"
+BGPath = "../background-imgs"
 
 poemList = os.listdir(poemPath)
 BGList = os.listdir(BGPath)
