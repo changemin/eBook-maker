@@ -1,5 +1,29 @@
 from PIL import Image, ImageDraw, ImageFont
-import random, json
+import random, json, argparse, os, sys
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-m", help="migrate config file",action="store_true")
+args = parser.parse_args()
+
+if args.m:
+    configPath = "config.json"
+    poemPath = "res/poem-txt"
+    BGPath = "res/background-imgs"
+
+    poemList = os.listdir(poemPath)
+    BGList = os.listdir(BGPath)
+
+    data = {"DATASET": {"PoemNum": len(poemList), "BGNum": len(BGList)}}
+
+    with open(configPath, "w") as write_file:
+        json.dump(data, write_file)
+
+    print("-------------DATASET Config-------------")
+    print("PoemNum : " + str(data['DATASET']['PoemNum']))
+    print("BGNum : " + str(data['DATASET']['BGNum']))
+    print("----------------------------------------")
+
+    sys.exit()
 
 WHITE = (255,255,255)
 
