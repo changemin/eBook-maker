@@ -1,15 +1,21 @@
 from PIL import Image, ImageDraw, ImageFont
-import random
+import random, json
 
 WHITE = (255,255,255)
 
-for x in range(1):
+with open('config.json') as json_file:
+    data = json.load(json_file)
+
+    PoemNum = str(data['DATASET']['PoemNum'])
+    BGNum =  str(data['DATASET']['BGNum'])
+
+for x in range(PoemNum):
     fontPath = "res/font-files/a시나리오.ttf"
     poemPath = "res/poem-txt/poem("+str(x+1)+").txt"
     #print("read file : " + filename)
     f = open(poemPath, "r", encoding='UTF8')
 
-    backgroundImgPath = "res/background-imgs/"+str(random.randrange(1,4))+".png"
+    backgroundImgPath = "res/background-imgs/"+str(random.randrange(1,BGNum))+".png"
     backgroundImg = Image.open(backgroundImgPath)
 
     poemTitle = f.readline()
