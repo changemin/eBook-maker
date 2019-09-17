@@ -6,8 +6,8 @@ WHITE = (255,255,255)
 with open('config.json') as json_file:
     data = json.load(json_file)
 
-    PoemNum = str(data['DATASET']['PoemNum'])
-    BGNum =  str(data['DATASET']['BGNum'])
+    PoemNum = data['DATASET']['PoemNum']
+    BGNum =  data['DATASET']['BGNum']
 
 for x in range(PoemNum):
     fontPath = "res/font-files/a시나리오.ttf"
