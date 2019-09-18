@@ -18,7 +18,7 @@ def ConfigManager(command, Num):
     BGList = os.listdir(BGPath)
 
     if(command == "add"):
-        data = {"DATASET": {"PoemNum": len(poemList)+Num, "BGNum": len(BGList)}}
+        data = {"DATASET": {"PoemNum": len(poemList), "BGNum": len(BGList)}}
         with open(configPath, "w") as write_file:
             json.dump(data, write_file)
     elif(command == "del"):
@@ -49,22 +49,23 @@ if args.add:
         if(tmp == "@"): 
             break
         NewPoemContent.append(tmp)
-        
-    print(str(NewPoemTitle))
-    print(str(NewPoemAuthor))
-    print(str(NewPoemContent))
 
+    print("새로운 시 제목 :"+ str(NewPoemTitle))
+    print("새로운 시인:"+str(NewPoemAuthor))
+    print("새로운 시 본문:"+str(NewPoemContent))
+    
     poemList = os.listdir(poemPath) 
-    print(poemList)
-    newPoem = open(poemPath+"/poem("+str(len(poemList)+1)+").txt", "w")
 
-    newPoem.write(NewPoemTitle)
-    newPoem.write(NewPoemAuthor)
-    #newPoem.write(NewPoemContent)
+    newPoem = open(poemPath+"/poem("+str(len(poemList)+1)+").txt", "w", encoding='UTF8')
+
+    newPoem.write(NewPoemTitle+"\n")
+    newPoem.write(NewPoemAuthor+"\n")
+    #print()
+    newPoem.write(str('\n'.join(NewPoemContent)))
 
     ConfigManager("add",1)
-
     #print(type(NewPoemContent))
+    print("-------------New poem added to list---------------")
     sys.exit()
 
 WHITE = (255,255,255)
