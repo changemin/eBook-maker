@@ -3,13 +3,14 @@ import random, json, argparse, os, sys
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", help="migrate config file",action="store_true")
+parser.add_argument("--add", help="add poem",action="store_true")
 args = parser.parse_args()
 
-if args.m:
-    configPath = "config.json"
-    poemPath = "res/poem-txt"
-    BGPath = "res/background-imgs"
+configPath = "config.json"
+poemPath = "res/poem-txt"
+BGPath = "res/background-imgs"
 
+if args.m:
     poemList = os.listdir(poemPath)
     BGList = os.listdir(BGPath)
 
@@ -23,6 +24,28 @@ if args.m:
     print("BGNum : " + str(data['DATASET']['BGNum']))
     print("----------------------------------------")
 
+    sys.exit()
+
+if args.add:
+    print("-----------------Create New poem------------------")
+    NewPoemTitle = input("시 제목을 입력해주세요:")
+    NewPoemAuthor = input("시인의 이름을 입력해주세요:")
+    NewPoemContent = []
+    tmp = []
+    while (True):
+        tmp = ""
+        tmp = input("본문 입력('@'를 입력하여 본문 입력을 끝냅니다.) : ")
+        if(tmp == "@"): 
+            break
+        NewPoemContent.append(tmp)
+    print(NewPoemTitle)
+    print(NewPoemAuthor)
+    print(NewPoemContent)
+
+    newPoem = open(poemPath+"poem("+len(poemList)+").txt")
+
+
+    #print(type(NewPoemContent))
     sys.exit()
 
 WHITE = (255,255,255)
@@ -65,3 +88,13 @@ for x in range(PoemNum):
     backgroundImg.save(targetPath)
     print("[LOG]Image Saved!")
     print("--------------------------------")
+
+def ConfigManager(command, Num):
+    if(command == "add"):
+        poemList = os.listdir(poemPath)
+        BGList = os.listdir(BGPath)
+
+        data = {"DATASET": {"PoemNum": len(poemList), "BGNum": len(BGList)}}
+
+        with open(configPath, "w") as write_file:
+            json.dump(data, write_file)
