@@ -3,7 +3,8 @@ import random, json, argparse, os, sys
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", help="migrate config file",action="store_true")
-parser.add_argument("--add", help="add poem",action="store_true")
+parser.add_argument("-add", help="add poem",action="store_true")
+parser.add_argument("-rm", help="delete poem",action="store_true")
 args = parser.parse_args()
 
 configPath = "config.json"
@@ -66,6 +67,24 @@ if args.add:
     ConfigManager("add",1)
     #print(type(NewPoemContent))
     print("-------------New poem added to list---------------")
+    sys.exit()
+
+elif args.rm:
+    poemList = os.listdir(poemPath)
+    rmPoemPath = "res/poem-txt/poem("+str(len(poemList))+").txt"
+    rmPermission = input("'"+rmPoemPath+"' 를 정말 지우시겠습니까? y/n ")
+
+    if rmPermission == "y" or rmPermission == "Y":
+        print(("'"+rmPoemPath+"' 를 성공적으로 삭제했습니다."))
+        os.remove(rmPoemPath)
+        sys.exit()
+    elif rmPermission == "n" or rmPermission == "N":
+        print("삭제 취소")
+        sys.exit()
+    else:
+        print("다른Command를 입력하셨습니다.")
+        sys.exit()
+
     sys.exit()
 
 WHITE = (255,255,255)
