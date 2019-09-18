@@ -59,15 +59,6 @@
 
     poem(4).txt: 이거슨 시 제목
 
-
-## 두가지의 테스트 files
-
-* txt2poem.py
-> poem-txt에 저장되어 있는 poem을 불러와 시 제목, 시인, 내용으로 출력해준다.
-
-* peom2jpg.py
-> 시(txt)를 png로 바꾸어 저장시켜준다.
-
 ## 사용예시
 > res/peom-txt/poem(1).txt
 
