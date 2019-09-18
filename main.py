@@ -5,6 +5,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-m", help="migrate config file",action="store_true")
 parser.add_argument("-add", help="add poem",action="store_true")
 parser.add_argument("-rm", help="delete poem",action="store_true")
+parser.add_argument("-l", help="delete poem",action="store_true")
 args = parser.parse_args()
 
 configPath = "config.json"
@@ -38,7 +39,7 @@ if args.m:
 
     sys.exit()
 
-if args.add:
+elif args.add:
     print("-----------------Create New poem------------------")
     NewPoemTitle = input("시 제목을 입력해주세요:")
     NewPoemAuthor = input("시인의 이름을 입력해주세요:")
@@ -87,6 +88,15 @@ elif args.rm:
 
     sys.exit()
 
+elif args.l:
+    for x in range(len(poemList)):
+        poemPath = "res/poem-txt/poem("+str(x+1)+").txt"
+        f = open(poemPath, "r", encoding='UTF8')
+        readPoemTitle = f.readline()
+        f.close()
+        print("poem("+str(x+1)+").txt: "+readPoemTitle)
+    sys.exit()
+
 WHITE = (255,255,255)
 
 with open('config.json') as json_file:
@@ -124,6 +134,7 @@ for x in range(PoemNum):
     d.line((90,320,640,320),fill=WHITE, width=1)
 
     targetPath = "result/poemResult("+ str(x+1) +").png"
+    f.close()
     backgroundImg.save(targetPath)
     print("[LOG]Image Saved!")
     print("--------------------------------")
