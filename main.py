@@ -25,7 +25,6 @@ def ConfigManager(command, Num):
         print("delete target")
     
 if args.m:
-
     data = {"DATASET": {"PoemNum": len(poemList), "BGNum": len(BGList)}}
 
     with open(configPath, "w") as write_file:
@@ -50,13 +49,21 @@ if args.add:
         if(tmp == "@"): 
             break
         NewPoemContent.append(tmp)
-    print(NewPoemTitle)
-    print(NewPoemAuthor)
-    print(NewPoemContent)
+        
+    print(str(NewPoemTitle))
+    print(str(NewPoemAuthor))
+    print(str(NewPoemContent))
 
-    newPoem = open(poemPath+"/poem("+str(len(poemList))+").txt")
+    poemList = os.listdir(poemPath) 
+    print(poemList)
+    newPoem = open(poemPath+"/poem("+str(len(poemList)+1)+").txt", "w")
+
+    newPoem.write(NewPoemTitle)
+    newPoem.write(NewPoemAuthor)
+    #newPoem.write(NewPoemContent)
 
     ConfigManager("add",1)
+
     #print(type(NewPoemContent))
     sys.exit()
 
