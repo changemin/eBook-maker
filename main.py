@@ -10,9 +10,21 @@ configPath = "config.json"
 poemPath = "res/poem-txt"
 BGPath = "res/background-imgs"
 
-if args.m:
+poemList = os.listdir(poemPath)
+BGList = os.listdir(BGPath)
+
+def ConfigManager(command, Num):
     poemList = os.listdir(poemPath)
     BGList = os.listdir(BGPath)
+
+    if(command == "add"):
+        data = {"DATASET": {"PoemNum": len(poemList)+Num, "BGNum": len(BGList)}}
+        with open(configPath, "w") as write_file:
+            json.dump(data, write_file)
+    elif(command == "del"):
+        print("delete target")
+    
+if args.m:
 
     data = {"DATASET": {"PoemNum": len(poemList), "BGNum": len(BGList)}}
 
@@ -42,9 +54,9 @@ if args.add:
     print(NewPoemAuthor)
     print(NewPoemContent)
 
-    newPoem = open(poemPath+"poem("+len(poemList)+").txt")
+    newPoem = open(poemPath+"/poem("+str(len(poemList))+").txt")
 
-
+    ConfigManager("add",1)
     #print(type(NewPoemContent))
     sys.exit()
 
@@ -88,13 +100,3 @@ for x in range(PoemNum):
     backgroundImg.save(targetPath)
     print("[LOG]Image Saved!")
     print("--------------------------------")
-
-def ConfigManager(command, Num):
-    if(command == "add"):
-        poemList = os.listdir(poemPath)
-        BGList = os.listdir(BGPath)
-
-        data = {"DATASET": {"PoemNum": len(poemList), "BGNum": len(BGList)}}
-
-        with open(configPath, "w") as write_file:
-            json.dump(data, write_file)
