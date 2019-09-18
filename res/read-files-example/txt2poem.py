@@ -1,5 +1,5 @@
 for x in range(1):
-    filename = "poem-txt/poem("+str(x+1)+").txt"
+    filename = "../poem-txt/poem("+str(x+1)+").txt"
     print("read file : " + filename)
     f = open(filename, "r", encoding='UTF8')
 

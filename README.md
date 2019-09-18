@@ -24,10 +24,28 @@
 
     C:>pip install Pillow
 
-> 시의 개수와 background img의 개수를 맞추기 위해서 migration을 해주어야 한다.
+> 시의 개수와 background img의 개수를 맞추기 위해서 migration을 해주어야 한다.(배경 이미지나 새로운 시를 입력했을 때도 migrate필요)
 
-    C:\YOURWORKSPACE>python main.py -m
+    C:\YOURWORKSPACE> python main.py -m
 
+> 새로운 시를 입력할 수도 있다.
+
+    C:\YOURWORKSPACE> python main.py -add 
+    -----------------Create New poem------------------
+    시 제목을 입력해주세요:이거슨 시 제목
+    시인의 이름을 입력해주세요:변경민
+    본문 입력('@'를 입력하여 본문 입력을 끝냅니다.) : 안녕 반가워
+    본문 입력('@'를 입력하여 본문 입력을 끝냅니다.) : 이건 시야
+    본문 입력('@'를 입력하여 본문 입력을 끝냅니다.) : @
+    새로운 시 제목 :이거슨 시 제목
+    새로운 시인:변경민
+    새로운 시 본문:['안녕 반가워', '이건 시야']
+    -------------New poem added to list---------------
+
+> 가장 최근에 추가한 시를 제거할 수도 있다.
+
+    C:\YOURWORKSPACE> python .\main.py -rm
+    
 ## 두가지의 테스트 files
 
 * txt2poem.py
