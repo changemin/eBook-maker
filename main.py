@@ -1,5 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
-import random, json, argparse, os, sys
+import random, json, argparse, os, sys, re
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", help="migrate config file",action="store_true")
@@ -106,7 +106,7 @@ with open('config.json') as json_file:
     BGNum =  data['DATASET']['BGNum']
 
 for x in range(PoemNum):
-    fontPath = "res/font-files/a시나리오.ttf"
+    fontPath = "res/font-files/KoPubDotumBold.ttf"
     poemPath = "res/poem-txt/poem("+str(x+1)+").txt"
     #print("read file : " + filename)
     f = open(poemPath, "r", encoding='UTF8')
@@ -122,16 +122,16 @@ for x in range(PoemNum):
     print("시인:" + poemAuthor) #author of the poem
     #print(poemContent) #content
 
-    titleFont = ImageFont.truetype(fontPath, 80)
-    authorFont = ImageFont.truetype(fontPath, 35)
-    contentFont = ImageFont.truetype(fontPath, 30)
+    titleFont = ImageFont.truetype(fontPath, 60)
+    authorFont = ImageFont.truetype(fontPath, 21)
+    contentFont = ImageFont.truetype(fontPath, 21)
 
     d = ImageDraw.Draw(backgroundImg)
-    d.text((100,160), poemTitle, font=titleFont, fill=WHITE)
-    d.text((550,260), poemAuthor, font=authorFont, fill=WHITE)
-    d.text((100,360), poemContent, font=contentFont, fill=WHITE)
+    d.text((100,130), poemTitle, font=titleFont, fill=WHITE)
+    d.text((550,230), poemAuthor, font=authorFont, fill=WHITE)
+    d.text((100,300), poemContent, font=contentFont, fill=WHITE)
 
-    d.line((90,320,640,320),fill=WHITE, width=1)
+    d.line((90,270,640,270),fill=WHITE, width=1)
 
     targetPath = "result/poemResult("+ str(x+1) +").png"
     f.close()
